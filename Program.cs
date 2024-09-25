@@ -9,6 +9,7 @@ double[] baniraRomanianGrades = new double[5] { 9.0, 9.2, 9.8, 10.0, 9.7 };
 // Student names
 string[] studentNames = new string[4] { "Yara", "Rodney", "Sobu", "Banira" };
 double[] studentRomanianGrades = new double[10];
+string studentGermanGrades = "";
 
 // Write the Report Header to the console
 Console.WriteLine("Student Grade\n");
@@ -42,8 +43,43 @@ foreach (var student in studentNames){
 
     currentRomanianGrade = Math.Round(sumAssignmentRomanianGrades / currentAssignments, 1);
 
-    Console.WriteLine($"{currentStudent}:\t{currentRomanianGrade}\t?");
-
+    if (currentRomanianGrade == 10.0){
+        studentGermanGrades = "1,0";
+    }
+    else if (currentRomanianGrade >= 9.5){
+        studentGermanGrades = "1,3";
+    }
+    else if (currentRomanianGrade >= 9.0){
+        studentGermanGrades = "1,7";
+    }
+    else if (currentRomanianGrade >= 8.5){
+        studentGermanGrades = "2,0";
+    }
+    else if (currentRomanianGrade >= 8.0){
+        studentGermanGrades = "2,3";
+    }
+    else if (currentRomanianGrade >= 7.5){
+        studentGermanGrades = "2,7";
+    }
+    else if (currentRomanianGrade >= 7.0){
+        studentGermanGrades = "3,0";
+    }
+    else if (currentRomanianGrade >= 6.5){
+        studentGermanGrades = "3,3";
+    }
+    else if (currentRomanianGrade >= 6.0){
+        studentGermanGrades = "3,7";
+    }
+    else if (currentRomanianGrade >= 5.0){
+        studentGermanGrades = "4.0";
+    }
+    else if (currentRomanianGrade < 5.0 && currentRomanianGrade >= 1.0){
+        studentGermanGrades = "5.0";
+    }
+    else{
+        Console.WriteLine("Error: Invalid Romanian Grade");
+    }
+    Console.WriteLine($"{currentStudent}:\t\t{currentRomanianGrade}\t\t{studentGermanGrades}");
 }
 
 Console.WriteLine("\nPress any key to exit...");
