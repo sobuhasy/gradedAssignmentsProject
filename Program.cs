@@ -33,6 +33,8 @@ foreach (var student in studentNames){
 
     // initialize/reset the sum of the Romanian grades
     double sumAssignmentRomanianGrades = 0.0;
+    double sumExamGrades = 0.0;
+    double sumExtraCreditGrades = 0.0;
 
     // initialize/reset the calculated average Romanian grade
     double currentRomanianGrade = 0.0;
@@ -46,10 +48,12 @@ foreach (var student in studentNames){
         if (gradedAssignments <= examAssignments){
             // add the extra grade to the sum
             sumAssignmentRomanianGrades += romanianGrade;
+            sumExamGrades += romanianGrade;
         }
         else{
             // add the extra grade to the sum
             sumAssignmentRomanianGrades += romanianGrade;
+            sumExtraCreditGrades += romanianGrade;
         }
 
     }
@@ -94,9 +98,10 @@ foreach (var student in studentNames){
     }
 
     // Placeholder values for exam score and extra credit
-    int examScore = 0;
-    int extraCredit = 0;
-    int extraCreditPoints = 0;
+    double examScore = Math.Round(sumExamGrades / examAssignments, 1);
+    double extraCredit = Math.Round(sumExtraCreditGrades / (gradedAssignments - examAssignments), 1);
+    double extraCreditPoints = Math.Round(0.1 * sumExtraCreditGrades / examAssignments, 1);
+    int finalNumericScore = (int) Math.Round((0.1 * sumExtraCreditGrades + sumExamGrades) / gradedAssignments, 0);
 
     Console.WriteLine($"{currentStudent}:\t\t{examScore}\t\t{currentRomanianGrade}\t\t{studentGermanGrades}\t\t{extraCredit}(+{extraCreditPoints})");
 }
