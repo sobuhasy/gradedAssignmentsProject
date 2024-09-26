@@ -1,4 +1,5 @@
-﻿// initalize variables - graded assignments
+﻿
+// initalize variables - graded assignments
 int examAssignments = 5;
 
 double[] yaraRomanianGrades = new double[] { 9.3, 8.7, 9.8, 9.5, 10.0, 9.4, 9.0 };
@@ -13,7 +14,7 @@ string studentGermanGrades = "";
 
 // Write the Report Header to the console
 Console.WriteLine("Student Grade\n");
-Console.WriteLine("\t\tRO\t\tDE");
+Console.WriteLine("\t\tExam Score\t\tRO\t\tDE\t\tExtra Credit");
 
 foreach (var student in studentNames){
     string currentStudent = student;
@@ -91,7 +92,13 @@ foreach (var student in studentNames){
     else{
         Console.WriteLine("Error: Invalid Romanian Grade");
     }
-    Console.WriteLine($"{currentStudent}:\t\t{currentRomanianGrade}\t\t{studentGermanGrades}");
+
+    // Placeholder values for exam score and extra credit
+    int examScore = 0;
+    int extraCredit = 0;
+    int extraCreditPoints = 0;
+
+    Console.WriteLine($"{currentStudent}:\t\t{examScore}\t\t{currentRomanianGrade}\t\t{studentGermanGrades}\t\t{extraCredit}(+{extraCreditPoints})");
 }
 
 Console.WriteLine("\nPress any key to exit...");
