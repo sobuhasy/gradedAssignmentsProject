@@ -1,10 +1,11 @@
-﻿// initalize variables - graded assignments
-int currentAssignments = 5;
+﻿
+// initalize variables - graded assignments
+int examAssignments = 5;
 
-double[] yaraRomanianGrades = new double[5] { 9.3, 8.7, 9.8, 9.5, 10.0 };
-double[] rodneyRomanianGrades = new double[5] { 8.0, 8.3, 8.2, 8.8, 8.5 };
-double[] sobuRomanianGrades = new double[5] { 8.4, 9.6, 7.3, 8.5, 7.9 };
-double[] baniraRomanianGrades = new double[5] { 9.0, 9.2, 9.8, 10.0, 9.7 };
+double[] yaraRomanianGrades = new double[] { 9.3, 8.7, 9.8, 9.5, 10.0, 9.4, 9.0 };
+double[] rodneyRomanianGrades = new double[] { 8.0, 8.3, 8.2, 8.8, 8.5, 8.9 };
+double[] sobuRomanianGrades = new double[] { 8.4, 9.6, 7.3, 8.5, 7.9, 8.9, 8.9 };
+double[] baniraRomanianGrades = new double[] { 9.0, 9.2, 9.8, 10.0, 9.7, 9.6 };
 
 // Student names
 string[] studentNames = new string[4] { "Yara", "Rodney", "Sobu", "Banira" };
@@ -13,7 +14,7 @@ string studentGermanGrades = "";
 
 // Write the Report Header to the console
 Console.WriteLine("Student Grade\n");
-Console.WriteLine("\t\tRO\t\tDE");
+Console.WriteLine("\t\tExam Score\t\tRO\t\tDE\t\tExtra Credit");
 
 foreach (var student in studentNames){
     string currentStudent = student;
@@ -36,12 +37,24 @@ foreach (var student in studentNames){
     // initialize/reset the calculated average Romanian grade
     double currentRomanianGrade = 0.0;
 
+    int gradedAssignments = 0;
     foreach (var romanianGrade in studentRomanianGrades){
-        // add the grade to the sum
-        sumAssignmentRomanianGrades += romanianGrade;
+
+        // increment the number of graded assignments
+        gradedAssignments += 1;
+        
+        if (gradedAssignments <= examAssignments){
+            // add the extra grade to the sum
+            sumAssignmentRomanianGrades += romanianGrade;
+        }
+        else{
+            // add the extra grade to the sum
+            sumAssignmentRomanianGrades += romanianGrade;
+        }
+
     }
 
-    currentRomanianGrade = Math.Round(sumAssignmentRomanianGrades / currentAssignments, 1);
+    currentRomanianGrade = Math.Round(sumAssignmentRomanianGrades / gradedAssignments, 1);
 
     if (currentRomanianGrade == 10.0){
         studentGermanGrades = "1,0";
@@ -79,7 +92,13 @@ foreach (var student in studentNames){
     else{
         Console.WriteLine("Error: Invalid Romanian Grade");
     }
-    Console.WriteLine($"{currentStudent}:\t\t{currentRomanianGrade}\t\t{studentGermanGrades}");
+
+    // Placeholder values for exam score and extra credit
+    int examScore = 0;
+    int extraCredit = 0;
+    int extraCreditPoints = 0;
+
+    Console.WriteLine($"{currentStudent}:\t\t{examScore}\t\t{currentRomanianGrade}\t\t{studentGermanGrades}\t\t{extraCredit}(+{extraCreditPoints})");
 }
 
 Console.WriteLine("\nPress any key to exit...");
